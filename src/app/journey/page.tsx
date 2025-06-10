@@ -1,5 +1,5 @@
-import { Background3D } from "@/components/background-3d";
-import { Box, BoxFull } from "@/components/box";
+import { Background3D } from "@/features/3d-presentation/components/background-3d";
+import { Box, BoxFull } from "@/features/3d-presentation/components/box";
 
 export default function JourneyPage() {
   return (

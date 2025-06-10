@@ -2,7 +2,7 @@
 
 import type { ReactElement } from "react";
 
-import { useScrollSection } from "@/hooks/use-scroll-section";
+import { useScrollSection } from "@/features/3d-presentation/hooks/use-scroll-section";
 
 import { Scene } from "./scroll-scene";
 
