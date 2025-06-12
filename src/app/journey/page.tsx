@@ -1,15 +1,13 @@
-import { Background3D } from "@/features/3d-presentation/components/background-3d";
 import { Box, BoxFull } from "@/features/3d-presentation/components/box";
+import { Scene } from "@/features/3d-presentation/components/scroll-scene";
 
 export default function JourneyPage() {
   return (
     <>
-      <Background3D models={[<Box key={"box1"} />, <BoxFull key="box2" />]} />
+      <div className="fixed inset-0 -z-10">
+        <Scene models={[<Box key={"box1"} />, <BoxFull key="box2" />]} />
+      </div>
       <div className="relative flex min-h-screen flex-col items-center justify-between">
-        <div className="mt-32 text-center">
-          <h1 className="text-3xl font-bold">Journey Page</h1>
-          <p className="mt-4 text-lg">This is the journey page content.</p>
-        </div>
         <div className="my-[50vh] w-full max-w-4xl space-y-96 px-8">
           <section className="py-20 text-center">
             <h2 className="mb-4 text-2xl font-semibold">

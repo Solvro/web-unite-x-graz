@@ -14,10 +14,14 @@ export const useScrollSection = ({
   const [currentSection, setCurrentSection] = useState(0);
 
   useEffect(() => {
+    setCurrentSection(
+      Math.floor(window.scrollY / (window.innerHeight * sectionHeight)),
+    );
+
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const section = Math.floor(scrollY / (windowHeight * sectionHeight));
+      const section = Math.floor(
+        window.scrollY / (window.innerHeight * sectionHeight),
+      );
       setCurrentSection(Math.min(section, maxSections - 1));
     };
 
