@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 import {
   TiSocialFacebook,
   TiSocialGithub,
