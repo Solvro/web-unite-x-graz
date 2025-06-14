@@ -14,26 +14,38 @@ export function Scene() {
 
       <ScrollControls pages={2} damping={0.01}>
         <Scroll>
-          <group position={[0, 0, 0]}>
+          <group position={[1.5, 0, 0]}>
             <Box />
           </group>
-          <group position={[0, -7, 0]}>
+          <group position={[-1.5, -7.6, 0]}>
             <BoxFull />
           </group>
         </Scroll>
 
         <Scroll html>
-          <section className="flex h-screen flex-col items-center justify-center text-center">
-            <h2 className="mb-4 text-2xl font-semibold">
-              Section 1: Wireframe
-            </h2>
-            <p>Box wireframe section 1</p>
-          </section>
+          <div className="flex w-screen flex-col items-center justify-center">
+            <div className="flex h-screen w-full items-center justify-center">
+              <section className="grid h-1/2 w-4xl grid-cols-2 items-center rounded border border-white px-4 py-10">
+                <div>
+                  <h2 className="mb-4 text-2xl font-semibold">
+                    Section 1: Wireframe
+                  </h2>
+                  <p>Box wireframe section 1</p>
+                </div>
+              </section>
+            </div>
 
-          <section className="flex h-screen flex-col items-center justify-center text-center">
-            <h2 className="mb-4 text-2xl font-semibold">Section 2: Full Box</h2>
-            <p>Full box section 2</p>
-          </section>
+            <div className="flex h-screen w-full items-center justify-center">
+              <section className="grid h-1/2 w-4xl grid-cols-2 items-center rounded border border-white px-4 py-10 text-right">
+                <div className="col-start-2">
+                  <h2 className="mb-4 text-2xl font-semibold">
+                    Section 2: Full Box
+                  </h2>
+                  <p>Full box section 2</p>
+                </div>
+              </section>
+            </div>
+          </div>
         </Scroll>
       </ScrollControls>
     </Canvas>
