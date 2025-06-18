@@ -1,48 +1,49 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
 
-import { scrollSectionAtom } from "@/atoms/general-atoms";
+import { scrollSectionAtom, textOpacityAtom } from "@/atoms/general-atoms";
+
+const SECTIONS = [
+  {
+    title: "Section 1",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe incidunt qui unde dolore temporibus, autem quam nesciunt dolorem sed? Unde dolore quam illo, quibusdam esse doloremque harum dolorum laborum provident.",
+  },
+  {
+    title: "Section 2",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsum, quia culpa ea optio porro neque corrupti quis tempore fugiat officia qui, quasi ipsam animi suscipit expedita blanditiis fuga eligendi?",
+  },
+  {
+    title: "Section 3",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis totam magni assumenda similique pariatur. Maxime ducimus unde ullam dolorem aut, laboriosam quisquam officiis, pariatur velit quia praesentium reiciendis! Nemo, quasi!",
+  },
+];
 
 export function TextSections({ className }: { className?: string }) {
   const [section] = useAtom(scrollSectionAtom);
+  const [opacity] = useAtom(textOpacityAtom);
+
+  const currentSection = SECTIONS[section];
 
   return (
     <div className={className}>
-      {section === 0 && (
-        <div className="section">
-          <h2>Section 1</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            incidunt qui unde dolore temporibus, autem quam nesciunt dolorem
-            sed? Unde dolore quam illo, quibusdam esse doloremque harum dolorum
-            laborum provident.
-          </p>
-        </div>
-      )}
-      {section === 1 && (
-        <div className="section">
-          <h2>Section 2</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-            ipsum, quia culpa ea optio porro neque corrupti quis tempore fugiat
-            officia qui, quasi ipsam animi suscipit expedita blanditiis fuga
-            eligendi?
-          </p>
-        </div>
-      )}
-      {section === 2 && (
-        <div className="section">
-          <h2>Section 3</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Perspiciatis totam magni assumenda similique pariatur. Maxime
-            ducimus unde ullam dolorem aut, laboriosam quisquam officiis,
-            pariatur velit quia praesentium reiciendis! Nemo, quasi!
-          </p>
-        </div>
-      )}
-      {![0, 1, 2].includes(section) && <div>xd</div>}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`section-${section.toString()}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="section"
+        >
+          <h2>{currentSection.title}</h2>
+          <p>{currentSection.content}</p>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
