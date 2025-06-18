@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 
-import { Scene } from "@/features/3d-presentation/components/scene";
+import { Scene } from "@/components/journey/scene";
 
 export default function JourneyPage() {
   return (

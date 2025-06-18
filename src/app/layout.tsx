@@ -1,3 +1,4 @@
+import { Provider } from "jotai";
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/layout/footer";
@@ -21,13 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <QueryProvider>
-        <body
-          className={`${inter.className} flex min-h-screen flex-col font-sans antialiased`}
-        >
-          <Navbar />
-          {children}
-          <Footer />
-        </body>
+        <Provider>
+          <body
+            className={`${inter.className} flex min-h-screen flex-col font-sans antialiased`}
+          >
+            <Navbar />
+            {children}
+            <Footer />
+          </body>
+        </Provider>
       </QueryProvider>
     </html>
   );
