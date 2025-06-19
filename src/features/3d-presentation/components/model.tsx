@@ -3,6 +3,7 @@
 import { animated, useSpring } from "@react-spring/three";
 import { useFrame } from "@react-three/fiber";
 import { useAtom } from "jotai";
+import { useMemo } from "react";
 import * as THREE from "three";
 
 import { sectionAtom } from "../atoms/section-atoms";
@@ -24,11 +25,17 @@ export function Model({
 }: ModelProps) {
   const [sectionIndex] = useAtom(sectionAtom);
 
-  const modelMaterial = new THREE.MeshStandardMaterial({
-    transparent: true,
-    opacity: 0,
-    wireframe,
-  });
+  const modelMaterial = useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        transparent: true,
+        opacity: 0,
+        wireframe,
+      }),
+    [wireframe],
+  );
+
+  const modelGeometry = useMemo(() => new THREE.BoxGeometry(), []);
 
   const { opacity, size } = useSpring({
     opacity: sectionIndex === modelSection ? 1 : 0,
@@ -49,7 +56,7 @@ export function Model({
           (Array.isArray(scale) ? scale[1] : (scale ?? 1)) * s,
           (Array.isArray(scale) ? scale[2] : (scale ?? 1)) * s,
         ])}
-        geometry={new THREE.BoxGeometry()}
+        geometry={modelGeometry}
         material={modelMaterial}
       />
     </group>

@@ -14,8 +14,10 @@ export function ScrollManager() {
   const lastScroll = useRef(0);
   const isAnimation = useRef(false);
 
-  scroll.fill.classList.add("top-0");
-  scroll.fill.classList.add("absolute");
+  useEffect(() => {
+    scroll.fill.classList.add("top-0");
+    scroll.fill.classList.add("absolute");
+  }, [scroll.fill.classList]);
 
   useEffect(() => {
     gsap.to(scroll.el, {
