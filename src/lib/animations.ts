@@ -20,11 +20,11 @@ export const SlideInOut = (
     .fromTo(
       group.position,
       { x: left ? -10 : 10 },
-      { x: left ? -2.5 : 2.5, duration: 0.2 },
+      { x: left ? -2.5 : 2.5, duration: 0.4 },
     )
     .to(group.position, {
       x: left ? -2.5 : 2.5,
-      duration: 0.4,
+      duration: 0.5,
     })
     .to(group.position, {
       x: left ? -10 : 10,
