@@ -5,6 +5,8 @@ import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import type * as THREE from "three";
 
+import { SlideInOut } from "@/lib/animations";
+
 gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollModelProps {
@@ -47,28 +49,7 @@ export function ScrollModel({
     });
 
     if (timeline === undefined) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger,
-            start: "top 50%",
-            end: "bottom top",
-            scrub: true,
-          },
-        })
-        .fromTo(
-          ref.current.position,
-          { x: left ? -10 : 10 },
-          { x: left ? -2.5 : 2.5, duration: 0.4 },
-        )
-        .to(ref.current.position, {
-          x: left ? -2.5 : 2.5,
-          duration: 0.5,
-        })
-        .to(ref.current.position, {
-          x: left ? -10 : 10,
-          duration: 0.2,
-        });
+      SlideInOut(ref.current, left, trigger);
     } else {
       timeline(ref.current);
     }
