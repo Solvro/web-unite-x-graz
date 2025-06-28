@@ -29,6 +29,14 @@ export function ScrollModel({
       return;
     }
 
+    ref.current.visible = false;
+  }, []);
+
+  useEffect(() => {
+    if (ref.current == null) {
+      return;
+    }
+
     // floating animation
     /* NOTE: There is limitation when using it with custom timeline
      it overwrites any animation with y position or rotation */
@@ -53,6 +61,8 @@ export function ScrollModel({
     } else {
       timeline(ref.current);
     }
+
+    ref.current.visible = true; // after animations starts and positions set we can make model visible
   }, [left, timeline, trigger]);
 
   return (
