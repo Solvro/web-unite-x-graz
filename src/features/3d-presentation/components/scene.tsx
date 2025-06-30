@@ -13,29 +13,29 @@ import { ScrollModel } from "./scroll-model";
 export function Scene() {
   const animationScaleRotate = useMemo(() => {
     return (group: THREE.Group) =>
-      SlideInOutRotateScale(group, "#section1", 2, { x: degToRad(35) });
+      SlideInOutRotateScale(group, "#section1", 1.6, { x: degToRad(20) }, true);
   }, []); // NOTE: This is temporary, later move to individual models
 
   return (
-    <div className="fixed inset-0">
+    <div className="fixed inset-0 -z-10">
       <Canvas shadows>
         <ambientLight intensity={0.5} />
         <pointLight position={[3, 3, 3]} intensity={0.8} />
         <pointLight position={[-3, -3, -3]} intensity={0.3} />
 
         <Suspense fallback={null}>
-          <ScrollModel trigger="#section1" timeline={animationScaleRotate}>
+          <ScrollModel trigger="#section1" timeline={animationScaleRotate} left>
             <mesh>
               <boxGeometry />
               <meshStandardMaterial color={"#ffffff"} wireframe />
             </mesh>
           </ScrollModel>
 
-          <ScrollModel trigger="#section2" left>
+          <ScrollModel trigger="#section2">
             <Box />
           </ScrollModel>
 
-          <ScrollModel trigger="#section3">
+          <ScrollModel trigger="#section3" left>
             <Cone />
           </ScrollModel>
         </Suspense>

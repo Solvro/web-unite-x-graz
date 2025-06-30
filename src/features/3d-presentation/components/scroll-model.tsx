@@ -41,7 +41,7 @@ export function ScrollModel({
     /* NOTE: There is limitation when using it with custom timeline
      it overwrites any animation with y position or rotation */
     gsap.to(ref.current.position, {
-      y: 0.1,
+      y: 0.2,
       duration: 2,
       repeat: -1,
       yoyo: true,
@@ -49,7 +49,7 @@ export function ScrollModel({
     });
 
     gsap.to(ref.current.rotation, {
-      y: 0.4,
+      y: 0.3,
       duration: 4,
       repeat: -1,
       yoyo: true,
@@ -67,8 +67,6 @@ export function ScrollModel({
 
   return (
     // Adjust to be in a center with the text
-    <group ref={ref} position-y={-0.5}>
-      {children}
-    </group>
+    <group ref={ref}>{children}</group>
   );
 }
