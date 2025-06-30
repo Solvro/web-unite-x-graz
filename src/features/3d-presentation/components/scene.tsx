@@ -1,20 +1,16 @@
 "use client";
 
-import { Box, Cone } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useMemo } from "react";
-import type * as THREE from "three";
-
-import { SlideInOutRotateScale } from "@/lib/animations";
-import { degToRad } from "@/lib/utils";
+import { Suspense } from "react";
 
 import { ScrollModel } from "./scroll-model";
+import { journeySections } from "./sections";
 
 export function Scene() {
-  const animationScaleRotate = useMemo(() => {
-    return (group: THREE.Group) =>
-      SlideInOutRotateScale(group, "#section1", 1.6, { x: degToRad(20) }, true);
-  }, []); // NOTE: This is temporary, later move to individual models
+  // const animationScaleRotate = useMemo(() => {
+  //   return (group: THREE.Group) =>
+  //     SlideInOutRotateScale(group, "#section1", 1.6, { x: degToRad(20) }, true);
+  // }, []); // NOTE: This is temporary, later move to individual models
 
   return (
     <div className="fixed inset-0 -z-10">
@@ -24,20 +20,16 @@ export function Scene() {
         <pointLight position={[-3, -3, -3]} intensity={0.3} />
 
         <Suspense fallback={null}>
-          <ScrollModel trigger="#section1" timeline={animationScaleRotate} left>
-            <mesh>
-              <boxGeometry />
-              <meshStandardMaterial color={"#ffffff"} wireframe />
-            </mesh>
-          </ScrollModel>
-
-          <ScrollModel trigger="#section2">
-            <Box />
-          </ScrollModel>
-
-          <ScrollModel trigger="#section3" left>
-            <Cone />
-          </ScrollModel>
+          {journeySections.map((section) => (
+            <ScrollModel
+              key={section.id}
+              trigger={`#${section.id}`}
+              timeline={section.animation}
+              left={section.modelLeft}
+            >
+              {section.model}
+            </ScrollModel>
+          ))}
         </Suspense>
       </Canvas>
     </div>
