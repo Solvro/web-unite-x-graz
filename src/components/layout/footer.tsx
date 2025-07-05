@@ -35,6 +35,7 @@ function List({
 function ListItem({
   url,
   as,
+  target = "_blank",
   text,
   label,
 }: {
