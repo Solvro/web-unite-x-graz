@@ -35,6 +35,7 @@ function List({
 function ListItem({
   url,
   as,
+  target = "_blank",
   text,
   label,
 }: {
@@ -49,6 +50,7 @@ function ListItem({
       ) : (
         <Link
           href={url}
+          target={target}
           rel="noopener noreferrer"
           className="underline-animation"
           aria-label={label}
