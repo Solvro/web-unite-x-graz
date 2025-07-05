@@ -50,7 +50,7 @@ function ListItem({
       ) : (
         <Link
           href={url}
-          target={target}
+          rel="noopener noreferrer"
           className="underline-animation"
           aria-label={label}
         >
