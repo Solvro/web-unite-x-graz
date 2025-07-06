@@ -1,8 +1,21 @@
+import { Scene } from "@/features/3d-presentation/components/scene";
+import { SectionCard } from "@/features/3d-presentation/components/section-card";
+import { journeySections } from "@/features/3d-presentation/components/sections";
+
 export default function JourneyPage() {
   return (
-    <div className="flex flex-col items-center justify-between">
-      <h1 className="mt-32 text-3xl font-bold">Journey Page</h1>
-      <p className="mt-4 text-lg">This is the journey page content.</p>
-    </div>
+    <main className="relative">
+      <section className="grid h-screen place-content-center">
+        <h2 className="text-7xl font-bold">Hero</h2>
+      </section>
+
+      {journeySections.map((section) => (
+        <SectionCard key={section.id} id={section.id}>
+          {section.content}
+        </SectionCard>
+      ))}
+
+      <Scene />
+    </main>
   );
 }
