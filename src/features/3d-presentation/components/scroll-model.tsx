@@ -1,13 +1,10 @@
 // eslint-disable-next-line import/no-named-as-default
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import type * as THREE from "three";
 
 import { SlideInOut } from "@/lib/animations";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollModelProps {
   trigger: string; // trigger can be either an id or a class of an html element
