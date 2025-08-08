@@ -1,37 +1,38 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import {
+  Box,
+  Environment,
+  Float,
+  OrbitControls,
+  Sphere,
+} from "@react-three/drei";
+import { degToRad } from "three/src/math/MathUtils.js";
 
 import { ScrollModel } from "./scroll-model";
-import { journeySections } from "./sections";
+import { Steve } from "./steve";
 
 export function Scene() {
-  // const animationScaleRotate = useMemo(() => {
-  //   return (group: THREE.Group) =>
-  //     SlideInOutRotateScale(group, "#section1", 1.6, { x: degToRad(20) }, true);
-  // }, []); // NOTE: This is temporary, later move to individual models
-
   return (
-    <div className="fixed inset-0 -z-10">
-      <Canvas shadows>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[3, 3, 3]} intensity={0.8} />
-        <pointLight position={[-3, -3, -3]} intensity={0.3} />
+    <>
+      {/* TODO Lights need more work */}
+      <Environment
+        preset="studio"
+        environmentIntensity={0.3}
+        environmentRotation={[degToRad(-10), degToRad(180), 0]}
+      />
+      <directionalLight position={[-3, 2, 2]} intensity={0.4} />
+      <ambientLight intensity={0.2} />
 
-        <Suspense fallback={null}>
-          {journeySections.map((section) => (
-            <ScrollModel
-              key={section.id}
-              trigger={`#${section.id}`}
-              timeline={section.animation}
-              left={section.modelLeft}
-            >
-              {section.model}
-            </ScrollModel>
-          ))}
-        </Suspense>
-      </Canvas>
-    </div>
+      <ScrollModel trigger="#section1" left animateEnter={false}>
+        <Steve rotation={[0, Math.PI / 4, 0]} />
+      </ScrollModel>
+      <ScrollModel trigger="#section2">
+        <Steve rotation={[0, -Math.PI / 4, 0]} />
+      </ScrollModel>
+      <ScrollModel trigger="#section3" left>
+        <Box />
+      </ScrollModel>
+    </>
   );
 }
