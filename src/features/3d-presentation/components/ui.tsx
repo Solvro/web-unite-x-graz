@@ -2,7 +2,7 @@
 
 import { SectionCard } from "./section-card";
 
-export const UI = () => {
+export function UI() {
   return (
     <>
       <SectionCard id={"section1"}>
@@ -46,4 +46,4 @@ export const UI = () => {
       </SectionCard>
     </>
   );
-};
+}

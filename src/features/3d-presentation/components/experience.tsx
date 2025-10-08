@@ -1,12 +1,12 @@
 "use client";
 
-import { Loader, useProgress } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 
 import { Scene } from "./scene";
 
-export const Experience = () => {
+export function Experience() {
   const { progress } = useProgress();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -26,6 +26,4 @@ export const Experience = () => {
       </Suspense>
     </Canvas>
   );
-};
-
-export default Experience;
+}

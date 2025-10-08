@@ -2,7 +2,7 @@
 
 import { Float } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { ReactNode, useEffect, useRef } from "react";
 import type * as THREE from "three";
 

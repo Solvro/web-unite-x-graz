@@ -1,10 +1,10 @@
 "use client";
 
 import { useProgress } from "@react-three/drei";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 
-export const Loader = () => {
+export function Loader() {
   const { progress } = useProgress();
   const [visible, setVisible] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
@@ -41,4 +41,4 @@ export const Loader = () => {
       </div>
     </div>
   );
-};
+}

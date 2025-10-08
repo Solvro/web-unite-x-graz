@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Box,
-  Environment,
-  Float,
-  OrbitControls,
-  Sphere,
-} from "@react-three/drei";
+import { Box, Environment } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils.js";
 
 import { ScrollModel } from "./scroll-model";
