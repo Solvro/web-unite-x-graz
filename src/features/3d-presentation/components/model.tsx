@@ -2,24 +2,26 @@
 
 import { useGLTF } from "@react-three/drei";
 
-interface SteveProps {
+interface ModelProps {
+  modelUrl: string;
   position?: [number, number, number];
   rotation?: [number, number, number];
   scale?: number | [number, number, number];
   [key: string]: unknown;
 }
 
-export function Steve({
+export function Model({
+  modelUrl,
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = 1,
   ...props
-}: SteveProps) {
-  const { scene } = useGLTF("/steve.glb");
+}: ModelProps) {
+  const { scene } = useGLTF(modelUrl);
 
   return (
     <group position={position} rotation={rotation} scale={scale} {...props}>
-      <primitive object={scene.clone()} scale={0.1} />
+      <primitive object={scene.clone()} />
     </group>
   );
 }

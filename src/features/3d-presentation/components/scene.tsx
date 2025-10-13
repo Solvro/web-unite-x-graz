@@ -1,10 +1,10 @@
 "use client";
 
-import { Box, Environment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils.js";
 
+import { Model } from "./model";
 import { ScrollModel } from "./scroll-model";
-import { Steve } from "./steve";
 
 export function Scene() {
   return (
@@ -19,13 +19,21 @@ export function Scene() {
       <ambientLight intensity={0.2} />
 
       <ScrollModel trigger="#section1" left animateEnter={false}>
-        <Steve rotation={[0, Math.PI / 4, 0]} />
+        <Model modelUrl="/sand.glb" rotation={[0, Math.PI / 4, 0]} />
       </ScrollModel>
       <ScrollModel trigger="#section2">
-        <Steve rotation={[0, -Math.PI / 4, 0]} />
+        <Model
+          modelUrl="/microscope.glb"
+          scale={0.3}
+          position={[0, -1, 0]}
+          rotation={[0, -Math.PI / 4, 0]}
+        />
       </ScrollModel>
       <ScrollModel trigger="#section3" left>
-        <Box />
+        <Model
+          modelUrl="/wafer.glb"
+          rotation={[0, -Math.PI / 4, -Math.PI / 8]}
+        />
       </ScrollModel>
     </>
   );
