@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { type ReactNode, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 
 interface SectionCardProps {
   id: string;
@@ -19,7 +20,9 @@ export function SectionCard({
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (section === null) {
+      return;
+    }
 
     gsap.set(section, { opacity: 0 });
 
@@ -37,7 +40,7 @@ export function SectionCard({
     <section ref={sectionRef} id={id} className="h-[300vh]" {...props}>
       <div className="sticky top-0 flex h-screen w-full items-center justify-center px-8 py-32">
         <div
-          className={`grid h-full w-full grid-cols-2 gap-12 border border-white p-4 ${className}`}
+          className={`grid h-full w-full grid-cols-2 gap-12 border border-white p-4 ${String(className)}`}
         >
           {children}
         </div>

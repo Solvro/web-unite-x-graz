@@ -3,7 +3,8 @@
 import { Float } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { ReactNode, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import type * as THREE from "three";
 
 // percentage of x offset the model will be placed at after animation relative to the screen edge
@@ -18,17 +19,19 @@ interface ScrollModelProps {
   animateEnter?: boolean;
 }
 
-export const ScrollModel = ({
+export function ScrollModel({
   trigger,
   left = false,
   animateEnter = true,
   children,
-}: ScrollModelProps) => {
+}: ScrollModelProps) {
   const modelRef = useRef<THREE.Group>(null);
   const { viewport } = useThree();
 
   useEffect(() => {
-    if (!modelRef.current) return;
+    if (modelRef.current === null) {
+      return;
+    }
 
     const targetX = left
       ? -(viewport.width / 2 - viewport.width * X_OFFSET)
@@ -64,11 +67,11 @@ export const ScrollModel = ({
     });
 
     // scroll trigger cleaning is handled at page component
-  }, [viewport.width]);
+  }, [viewport.width, animateEnter, left, trigger]);
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatingRange={[-0.2, 0.2]}>
       <group ref={modelRef}>{children}</group>
     </Float>
   );
-};
+}

@@ -11,18 +11,26 @@ export function Loader() {
   const hasFadedOut = useRef(false);
 
   useEffect(() => {
-    if (progress === 100 && loaderRef.current && !hasFadedOut.current) {
+    if (
+      progress === 100 &&
+      loaderRef.current !== null &&
+      !hasFadedOut.current
+    ) {
       hasFadedOut.current = true;
       gsap.to(loaderRef.current, {
         opacity: 0,
         duration: 1,
         ease: "power2.out",
-        onComplete: () => setVisible(false),
+        onComplete: () => {
+          setVisible(false);
+        },
       });
     }
   }, [progress]);
 
-  if (!visible) return null;
+  if (!visible) {
+    return null;
+  }
 
   return (
     <div
@@ -34,7 +42,7 @@ export function Loader() {
         <div className="h-2 w-48 bg-gray-700">
           <div
             className="h-full bg-white transition-all duration-200"
-            style={{ width: `${progress}%` }}
+            style={{ width: `${progress.toString()}%` }}
           />
         </div>
         <div className="mt-2 text-sm">{progress.toFixed(0)}%</div>

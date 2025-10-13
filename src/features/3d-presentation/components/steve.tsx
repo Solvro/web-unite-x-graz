@@ -6,15 +6,15 @@ interface SteveProps {
   position?: [number, number, number];
   rotation?: [number, number, number];
   scale?: number | [number, number, number];
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
-export const Steve = ({
+export function Steve({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = 1,
   ...props
-}: SteveProps) => {
+}: SteveProps) {
   const { scene } = useGLTF("/steve.glb");
 
   return (
@@ -22,4 +22,4 @@ export const Steve = ({
       <primitive object={scene.clone()} scale={0.1} />
     </group>
   );
-};
+}
