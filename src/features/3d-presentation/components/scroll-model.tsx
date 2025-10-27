@@ -1,72 +1,77 @@
-// eslint-disable-next-line import/no-named-as-default
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import type { ReactNode } from "react";
+"use client";
+
+import { Float } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import type * as THREE from "three";
 
-import { SlideInOut } from "@/lib/animations";
-
-gsap.registerPlugin(ScrollTrigger);
+// percentage of x offset the model will be placed at after animation relative to the screen edge
+const X_OFFSET = 0.25;
+// percentage of x offset the model will be placed at before animation relative to the screen edge
+const X_OFFSCREEN_OFFSET = 0.25;
 
 interface ScrollModelProps {
-  trigger: string; // trigger can be either an id or a class of an html element
+  trigger: string;
   children: ReactNode;
   left?: boolean;
-  timeline?: (ref: THREE.Group) => gsap.core.Timeline;
+  animateEnter?: boolean;
 }
 
 export function ScrollModel({
   trigger,
-  children,
   left = false,
-  timeline,
+  animateEnter = true,
+  children,
 }: ScrollModelProps) {
-  const ref = useRef<THREE.Group>(null);
+  const modelRef = useRef<THREE.Group>(null);
+  const { viewport } = useThree();
 
   useEffect(() => {
-    if (ref.current == null) {
+    if (modelRef.current === null) {
       return;
     }
 
-    ref.current.visible = false;
-  }, []);
+    const targetX = left
+      ? -(viewport.width / 2 - viewport.width * X_OFFSET)
+      : viewport.width / 2 - viewport.width * X_OFFSET;
 
-  useEffect(() => {
-    if (ref.current == null) {
-      return;
-    }
+    if (animateEnter) {
+      modelRef.current.position.x = left
+        ? -(viewport.width / 2 + viewport.width * X_OFFSCREEN_OFFSET)
+        : viewport.width / 2 + viewport.width * X_OFFSCREEN_OFFSET;
 
-    // floating animation
-    /* NOTE: There is limitation when using it with custom timeline
-     it overwrites any animation with y position or rotation */
-    gsap.to(ref.current.position, {
-      y: 0.2,
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
-
-    gsap.to(ref.current.rotation, {
-      y: 0.3,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "none",
-    });
-
-    if (timeline === undefined) {
-      SlideInOut(ref.current, left, trigger);
+      gsap.to(modelRef.current.position, {
+        x: targetX,
+        scrollTrigger: {
+          trigger,
+          start: "-5% top",
+          end: "10% top",
+          scrub: true,
+        },
+        ease: "power2.out",
+      });
     } else {
-      timeline(ref.current);
+      modelRef.current.position.x = targetX;
     }
 
-    ref.current.visible = true; // after animations starts and positions set we can make model visible
-  }, [left, timeline, trigger]);
+    gsap.to(modelRef.current.position, {
+      y: 10,
+      scrollTrigger: {
+        trigger,
+        start: "bottom bottom",
+        end: "+=40% top",
+        scrub: true,
+      },
+    });
+
+    // scroll trigger cleaning is handled at page component
+  }, [viewport.width, animateEnter, left, trigger]);
 
   return (
-    // Adjust to be in a center with the text
-    <group ref={ref}>{children}</group>
+    <Float speed={2} rotationIntensity={0.5} floatingRange={[-0.2, 0.2]}>
+      <group ref={modelRef}>{children}</group>
+    </Float>
   );
 }
