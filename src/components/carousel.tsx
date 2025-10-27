@@ -1,11 +1,32 @@
 "use client";
 
-import React from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-function Carousel() {
+interface CarouselImage {
+  id: string;
+  image: string;
+}
+
+export function Carousel() {
+  const [images, setImages] = useState<CarouselImage[]>([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch("/api/carousel-images");
+        const data = (await response.json()) as { data: CarouselImage[] };
+        setImages(data.data);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+    void fetchImages();
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -45,23 +66,22 @@ function Carousel() {
       },
     ],
   };
+
   return (
     <div className="slider-container w-full">
       <Slider {...settings}>
-        <div className="size-64">
-          <h3>1</h3>
-        </div>
-        <div className="size-64">
-          <h3>2</h3>
-        </div>
-        <div className="size-64">
-          <h3>3</h3>
-        </div>
-        <div className="size-64">
-          <h3>4</h3>
-        </div>
+        {images.map((img) => (
+          <div key={img.id} className="flex justify-center">
+            <Image
+              src={`https://directus-twoc08g80owskccsgcw04cgg.s.solvro.pl/assets/${img.image}`}
+              alt="carousel"
+              className="size-64 rounded-xl object-cover"
+              width={256}
+              height={256}
+            />
+          </div>
+        ))}
       </Slider>
     </div>
   );
 }
-export { Carousel };
