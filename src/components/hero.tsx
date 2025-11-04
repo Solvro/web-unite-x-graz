@@ -1,8 +1,51 @@
+"use client";
+
+import { gsap } from "gsap";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 import { vt323 } from "@/lib/fonts";
 
 export function Hero() {
+  const floatingRef = useRef<HTMLDivElement | null>(null);
+  const imgWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (floatingRef.current === null) {
+      return;
+    }
+
+    const floatTween = gsap.to(floatingRef.current, {
+      y: -12,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      duration: 2.2,
+    });
+
+    // pulsating brightness on the actual <img> rendered by next/image
+    let imgTween: gsap.core.Tween | undefined;
+    const imgElement = imgWrapperRef.current?.querySelector(
+      "img",
+    ) as HTMLImageElement | null;
+    if (imgElement !== null) {
+      // ensure initial filter state
+      imgElement.style.filter = "brightness(1)";
+      imgTween = gsap.to(imgElement, {
+        filter: "brightness(1.32)",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        duration: 2.2,
+      });
+    }
+
+    return () => {
+      floatTween.kill();
+      imgTween?.kill();
+    };
+  }, []);
+
   return (
     <section className="container w-full overflow-hidden px-4 py-16">
       <video
@@ -41,15 +84,18 @@ export function Hero() {
           </div>
 
           {/* Center image - overlapping with negative margin */}
-          <div className="z-10 w-1/5 md:-mt-12">
-            <div className="relative">
-              <Image
-                src="/amigus.png"
-                alt="Solvro Logo"
-                width={220}
-                height={220}
-                className="h-auto w-auto"
-              />
+          <div className="z-10 w-2/5 md:-mt-18" ref={floatingRef}>
+            <div className="relative inline-block">
+              {/* wrap the Image so we can target the generated <img> */}
+              <div className="relative" ref={imgWrapperRef}>
+                <Image
+                  src="/procesor_landing.svg"
+                  alt="Solvro Logo"
+                  width={220}
+                  height={220}
+                  className="h-auto w-auto"
+                />
+              </div>
             </div>
           </div>
 
