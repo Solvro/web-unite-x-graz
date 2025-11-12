@@ -1,12 +1,61 @@
+"use client";
+
+import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import { FiSettings } from "react-icons/fi";
+import { useLayoutEffect, useRef, useState } from "react";
 
-export function Navbar() {
+import { Button } from "@/components/ui/button";
+import { Flag } from "@/components/ui/flag";
+
+export function Navbar({
+  initialLang = "pl",
+}: {
+  initialLang?: "pl" | "en" | "de";
+}) {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const [lang, setLang] = useState<"pl" | "en" | "de">(initialLang);
+  // IDs are handled inside Flag component now
+
+  // Use the reusable Flag component for consistent rendering
+
+  useLayoutEffect(() => {
+    const element = menuRef.current;
+    if (element === null) {
+      return;
+    }
+    gsap.killTweensOf(element);
+    if (open) {
+      element.style.pointerEvents = "auto";
+      gsap.fromTo(
+        element,
+        { opacity: 0, scaleY: 0.7, y: -8, transformOrigin: "top right" },
+        { opacity: 1, scaleY: 1, y: 0, duration: 0.28, ease: "power2.out" },
+      );
+      gsap.fromTo(
+        element.children,
+        { opacity: 0, y: -6 },
+        { opacity: 1, y: 0, duration: 0.22, stagger: 0.05, ease: "power2.out" },
+      );
+    } else {
+      gsap.to(element, {
+        opacity: 0,
+        scaleY: 0.7,
+        y: -8,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: () => {
+          element.style.pointerEvents = "none";
+        },
+      });
+    }
+  }, [open]);
+
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 px-3 py-3 md:px-12">
       <div className="mx-auto flex items-center justify-between">
-        {/* logo  */}
+        {/* logo */}
         <Link href="/" className="group relative block h-16 w-16">
           <Image
             src="/logo_solvro_mono.svg"
@@ -24,101 +73,64 @@ export function Navbar() {
           />
         </Link>
 
-        {/* rozwijany navbar (kiedys rozwijany xd) */}
-        {/* Floating language switcher in the top-right */}
+        {/* Language switcher (fixed top-right) */}
         <div className="fixed top-4 right-4 z-50">
-          <details className="relative">
-            <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <span className="inline-flex items-center justify-center rounded-full border border-white p-0.5">
-                <span
-                  aria-label="Polish"
-                  title="Polish"
-                  className="block h-8 w-8 overflow-hidden rounded-full"
+          <Button
+            type="button"
+            aria-label="Toggle language menu"
+            aria-expanded={open}
+            onClick={() => {
+              setOpen((o) => !o);
+            }}
+            className="relative inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 border-white p-1 [&_svg]:!h-full [&_svg]:!w-full"
+            variant="ghost"
+          >
+            <Flag code={lang} />
+          </Button>
+
+          <div
+            ref={menuRef}
+            className="pointer-events-none absolute right-0 mt-2 flex origin-top-right flex-col items-end gap-2 opacity-0"
+          >
+            {(["pl", "en", "de"] as const)
+              .filter((c) => c !== lang)
+              .map((code) => (
+                <Button
+                  key={code}
+                  type="button"
+                  aria-label={
+                    code === "pl"
+                      ? "Polish"
+                      : code === "en"
+                        ? "English"
+                        : "German"
+                  }
+                  title={
+                    code === "pl"
+                      ? "Polish"
+                      : code === "en"
+                        ? "English"
+                        : "German"
+                  }
+                  onClick={async () => {
+                    setLang(code);
+                    try {
+                      await fetch("/api/lang", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ lang: code }),
+                      });
+                    } catch {}
+                    setOpen(false);
+                  }}
+                  className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 border-white p-1 [&_svg]:!h-full [&_svg]:!w-full"
+                  variant="ghost"
                 >
-                  {/* Polish flag (circle-clipped) */}
-                  <svg
-                    viewBox="0 0 4 3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-full w-full"
-                  >
-                    <rect width="4" height="3" fill="#ffffff" />
-                    <rect y="1.5" width="4" height="1.5" fill="#dc2626" />
-                  </svg>
-                </span>
-              </span>
-            </summary>
-
-            {/* Menu with other flags */}
-            <div className="absolute right-0 mt-2 flex flex-col items-end gap-2">
-              <button
-                type="button"
-                aria-label="English"
-                title="English"
-                className="inline-flex items-center justify-center rounded-full border border-white p-0.5"
-              >
-                <span className="block h-8 w-8 overflow-hidden rounded-full">
-                  {/* UK flag (simplified) */}
-                  <svg
-                    viewBox="0 0 60 30"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-full w-full"
-                  >
-                    <rect width="60" height="30" fill="#012169" />
-                    <path
-                      d="M0 0 L60 30 M60 0 L0 30"
-                      stroke="#ffffff"
-                      strokeWidth="6"
-                    />
-                    <path
-                      d="M0 0 L60 30 M60 0 L0 30"
-                      stroke="#C8102E"
-                      strokeWidth="3"
-                    />
-                    <path
-                      d="M30 0 V30 M0 15 H60"
-                      stroke="#ffffff"
-                      strokeWidth="10"
-                    />
-                    <path
-                      d="M30 0 V30 M0 15 H60"
-                      stroke="#C8102E"
-                      strokeWidth="6"
-                    />
-                  </svg>
-                </span>
-              </button>
-
-              <button
-                type="button"
-                aria-label="German"
-                title="German"
-                className="inline-flex items-center justify-center rounded-full border border-white p-0.5"
-              >
-                <span className="block h-8 w-8 overflow-hidden rounded-full">
-                  {/* German flag */}
-                  <svg
-                    viewBox="0 0 5 3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-full w-full"
-                  >
-                    <rect width="5" height="3" fill="#000000" />
-                    <rect y="1" width="5" height="2" fill="#dd0000" />
-                    <rect y="2" width="5" height="1" fill="#ffce00" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </details>
+                  <Flag code={code} />
+                </Button>
+              ))}
+          </div>
         </div>
-        <button
-          aria-label="Settings"
-          className="rounded-4xl p-2 transition-colors"
-        >
-          <FiSettings
-            className="text-primary hover:text-primary-foreground h-12 transition-colors duration-300"
-            size={40}
-          />
-        </button>
       </div>
     </nav>
   );

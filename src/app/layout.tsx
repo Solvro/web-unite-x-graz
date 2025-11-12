@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/layout/footer";
-import { Navbar } from "@/components/layout/navbar";
+import { NavbarWrapper } from "@/components/layout/navbar-wrapper";
 import { inter } from "@/lib/fonts";
 import { QueryProvider } from "@/lib/query-client";
 
@@ -24,7 +24,7 @@ export default function RootLayout({
         <body
           className={`${inter.className} flex min-h-screen flex-col font-sans antialiased`}
         >
-          <Navbar />
+          <NavbarWrapper />
           {children}
           <Footer />
         </body>
