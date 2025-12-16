@@ -30,7 +30,9 @@ export function middleware(request: NextRequest) {
     response.cookies.set("lang", lang, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
-      sameSite: "lax",
+      sameSite: "strict",
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
     });
   }
   return response;

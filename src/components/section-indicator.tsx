@@ -1,4 +1,5 @@
 "use client";
+
 const handleClick = (id: string) => {
   const element = document.querySelector(`#${id}`);
   if (element !== null) {

@@ -1,9 +1,9 @@
 import { Carousel } from "@/components/carousel";
 import { Hero } from "@/components/hero";
 import { JourneyStartButton } from "@/components/journey-start-button";
+import { PaddingWrapper } from "@/components/padding-wrapper";
 import { SectionIndicator } from "@/components/section-indicator";
-
-import { PaddingWrapper } from "../components/padding-wrapper";
+import { TripMap } from "@/components/trip-map";
 
 export default function Home() {
   return (
@@ -14,7 +14,9 @@ export default function Home() {
           <Hero />
         </section>
 
-        <section id="section-2"></section>
+        <section className="w-3/4" id="section-2">
+          <TripMap />
+        </section>
 
         <section id="section-3" className=""></section>
         <Carousel />

@@ -42,7 +42,7 @@ export function Loader() {
         <div className="h-2 w-48 bg-gray-700">
           <div
             className="h-full bg-white transition-all duration-200"
-            style={{ width: `${progress.toString()}%` }}
+            style={{ width: `${String(progress)}%` }}
           />
         </div>
         <div className="mt-2 text-sm">{progress.toFixed(0)}%</div>

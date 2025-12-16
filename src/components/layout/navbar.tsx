@@ -99,19 +99,9 @@ export function Navbar({
                   key={code}
                   type="button"
                   aria-label={
-                    code === "pl"
-                      ? "Polish"
-                      : code === "en"
-                        ? "English"
-                        : "German"
+                    { pl: "Polish", en: "English", de: "German" }[code]
                   }
-                  title={
-                    code === "pl"
-                      ? "Polish"
-                      : code === "en"
-                        ? "English"
-                        : "German"
-                  }
+                  title={{ pl: "Polish", en: "English", de: "German" }[code]}
                   onClick={async () => {
                     setLang(code);
                     try {

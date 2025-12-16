@@ -17,7 +17,9 @@ export async function POST(request: Request) {
     response.cookies.set("lang", value, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365,
-      sameSite: "lax",
+      sameSite: "strict",
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
     });
     return response;
   } catch {

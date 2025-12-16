@@ -3,6 +3,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
+
 interface SectionCardProps {
   id: string;
   children: ReactNode;
@@ -40,7 +42,10 @@ export function SectionCard({
     <section ref={sectionRef} id={id} className="h-[300vh]" {...props}>
       <div className="sticky top-0 flex h-screen w-full items-center justify-center px-8 py-32">
         <div
-          className={`grid h-full w-full grid-cols-2 gap-12 border border-white p-4 ${String(className)}`}
+          className={cn(
+            "grid h-full w-full grid-cols-2 gap-12 border border-white p-4",
+            className,
+          )}
         >
           {children}
         </div>

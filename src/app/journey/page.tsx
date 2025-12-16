@@ -4,7 +4,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { useEffect } from "react";
-// import { useEffect } from "react";
 import SplitType from "split-type";
 
 import { Experience } from "@/features/3d-presentation/components/experience";
@@ -25,24 +24,22 @@ export default function JourneyPage() {
   }, []);
 
   useEffect(() => {
-    const splitTypes = document.querySelectorAll(".reveal-type");
-    for (const char of splitTypes) {
-      if (char instanceof HTMLElement) {
-        const text = new SplitType(char, { types: "chars" });
-        gsap.set(text.chars, { color: "gray" });
+    const splitTypes = document.querySelectorAll<HTMLElement>(".reveal-type");
+    for (const element of splitTypes) {
+      const text = new SplitType(element, { types: "chars" });
+      gsap.set(text.chars, { color: "gray" });
 
-        gsap.to(text.chars, {
-          scrollTrigger: {
-            trigger: char,
-            start: "50% 50%",
-            end: "bottom top",
-            scrub: true,
-          },
-          color: "white",
-          stagger: 0.1,
-          duration: 0.1,
-        });
-      }
+      gsap.to(text.chars, {
+        scrollTrigger: {
+          trigger: element,
+          start: "50% 50%",
+          end: "bottom top",
+          scrub: true,
+        },
+        color: "white",
+        stagger: 0.1,
+        duration: 0.1,
+      });
     }
 
     return () => {
