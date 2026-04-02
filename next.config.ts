@@ -1,16 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "directus-twoc08g80owskccsgcw04cgg.s.solvro.pl",
-        port: "",
-        pathname: "/assets/**",
-      },
-    ],
-  },
-};
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
-export default nextConfig;
+const nextConfig: NextConfig = {};
+export default withNextIntl(nextConfig);

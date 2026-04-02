@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "journey": "The Journey",
+    "exchange": "The Exchange",
+    "about": "Organizers"
+  },
+  "hero": {
+    "title1": "JOURNEY THROUGH THE",
+    "title2": "Silicon World",
+    "subtitle": "Wrocław Tech and TU Graz students explore the world of semiconductors in a Unite! Seed Fund project that combines education, hands-on experience and international exchange.",
+    "cta_journey": "Start the Journey",
+    "cta_summary": "See the Exchange"
+  },
+  "silicon": {
+    "intro_title": "It starts with sand...",
+    "intro_body": "Common sand contains a lot of silicon dioxide (SiO₂). But it's not pure enough for electronics. The journey begins by extracting and refining silicon from quartz sand through a high-temperature chemical process - a requirement for creating reliable microchips.",
+    "step1_title": "Purifying the Sand",
+    "step1_body": "Silicon sand contains a lot of silicon dioxide (SiO₂). The journey begins by extracting and refining silicon from quartz sand through a high-temperature process - a requirement for creating reliable microchips. Silicon is purified to 99.9999999% (nine nines) purity.",
+    "step1_label": "Silicon is purified to 99.9999999%",
+    "step2_title": "Growing a Silicon Ingot",
+    "step2_body": "The ultra-pure silicon is melted and grown into a single large crystal using a process called the Czochralski method. A seed is shaped into a cylindrical ingot - a perfect silicon structure that forms the base for every modern microchip.",
+    "step2_label": "Ingot height up to 2m",
+    "step3_title": "Wafer Slicing and Polishing",
+    "step3_body": "The silicon ingot is sliced into thin wafers, like microscopic pancakes. Each wafer is polished to atomic-level smoothness, creating a flat surface ready for circuit printing. These wafers are now ready for microchip design.",
+    "step3_label": "< 1nm surface roughness",
+    "step4_title": "Circuit Printing",
+    "step4_body": "Photolithography transfers the circuit pattern onto the wafer using light. Layer by layer, transistors are built at nanometer scale - smaller than a virus. A single modern chip contains billions of transistors.",
+    "step4_label": "Billions of transistors per chip",
+    "step5_title": "Packaging & Testing",
+    "step5_body": "Each chip is cut from the wafer, tested for defects, and packaged into the familiar black chips we know. From raw sand to finished processor - the journey of silicon is complete.",
+    "step5_label": "From sand to chip"
+  },
+  "stats": {
+    "section_title": "The EU Chips Act",
+    "section_subtitle": "In 2023, the European Union passed the EU Chips Act - a landmark regulation to secure Europe's semiconductor supply chain, reduce strategic dependencies, and make Europe a global leader in chip technology by 2030.",
+    "stat1_value": "€43B",
+    "stat1_label": "in public and private investment mobilised by 2030",
+    "stat2_value": "20%",
+    "stat2_label": "target share of global chip production - up from ~9% today",
+    "stat3_value": "2030",
+    "stat3_label": "target year for doubling Europe's share of world chip output",
+    "stat4_value": "~9%",
+    "stat4_label": "Europe's current share of global semiconductor production",
+    "project_link": "Our project embraced this ambition directly - bringing engineering students face-to-face with chip fabs, clean rooms, and research labs to broaden awareness of semiconductors as a strategic industry.",
+    "source_note": "Source: European Commission — EU Chips Act, 2023"
+  },
+  "exchange": {
+    "section_title": "The Exchange",
+    "section_subtitle": "Two student communities. Two countries. One shared passion for technology.",
+    "graz_title": "Graz, Austria",
+    "graz_date": "May 2025",
+    "graz_body": "Members of KN Solvro visited Graz - the Silicon Valley of Europe. They toured ams OSRAM's production facilities including a Clean Room, explored Silicon Austria Labs' cutting-edge research, and visited laboratories at Technische Universität Graz. The Austrian students from BEST Graz ensured the visit combined technical depth with cultural warmth.",
+    "graz_companies": "Companies & institutions visited",
+    "wroclaw_title": "Wrocław, Poland",
+    "wroclaw_date": "October 2025",
+    "wroclaw_body": "TU Graz students visited Wrocław, hosted by KN Solvro. They explored XTPL's nanoprinting technology, Balluff's sensor solutions, and the Wrocław Centre for Networking and Supercomputing (WCSS). The programme also included a tour of the Faculty of Electronics at Wrocław Tech, including the specialist Clean Room, organized with the NaMi student research group.",
+    "wroclaw_companies": "Companies & institutions visited"
+  },
+  "about": {
+    "section_title": "Organizers",
+    "section_subtitle": "The two student organisations behind the project.",
+    "solvro_name": "KN Solvro",
+    "solvro_university": "Wrocław University of Science and Technology",
+    "solvro_desc": "The biggest IT student organization of its kind in Poland. Based at WUST, but with international impact - we build apps from students to students, push the boundaries of science through AI/ML research, and foster community by running events that empower the next generation of skilled engineers.",
+    "best_name": "BEST Graz",
+    "best_university": "Technische Universität Graz",
+    "best_desc": "A student organisation at TU Graz with 20 active members, dedicated to connecting students with industry and academia through international events and career fairs.",
+    "funded_by": "Funded by",
+    "in_cooperation": "In cooperation with",
+    "learn_more": "Learn more"
+  },
+  "footer": {
+    "tagline": "Journey Through The Silicon World",
+    "subtitle": "A Unite! Seed Fund project by KN Solvro & BEST Graz",
+    "rights": "© 2025 KN Solvro, Wrocław University of Science and Technology. All rights reserved."
+  }
+}

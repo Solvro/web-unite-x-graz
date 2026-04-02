@@ -1,107 +1,74 @@
-# Solvro Next.js template
+# Journey Through The Silicon World
 
-## Welcome to the repository of Solvro Next.js template
+Commemorative and educational website for the **Unite! Seed Fund** project by [KN Solvro](https://solvro.pwr.edu.pl) (Wrocław University of Science and Technology) and [BEST Graz](https://www.bestgraz.org) (Technische Universität Graz).
 
-A standardized Next.js template maintained by Solvro Science Club at Wrocław University of Science and Technology. This template incorporates our best practices, coding standards, and recommended project structure for web development projects. It serves as a starting point for new Solvro members and projects, ensuring consistency and quality across our initiatives.
+## About the project
 
-## Technologies used
+"Journey Through The Silicon World" consisted of two student exchange visits:
 
-- Next.js
-- React.js
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui
-- Tanstack Query
+- **May 2025** — Solvro members visited Graz: ams OSRAM, Silicon Austria Labs, TU Graz labs
+- **October 2025** — BEST Graz students visited Wrocław: XTPL, Balluff, WCSS, PWr Clean Room with NaMi
 
-## Links
+The website has two purposes:
 
-[![docs.solvro.pl](https://i.imgur.com/fuV0gra.png)](https://docs.solvro.pl)
+1. **Commemorative** — celebrates the exchange project and its participants
+2. **Educational** — explains how sand becomes a silicon chip (5-step journey)
 
-## Development
+Funded by the **Unite! Seed Fund**. Under the patronage of Prof. dr hab. inż. Renata Krzyżyńska (PWr Vice-Rector for External Relations), coordinated with the PWr Centre for National and International Relations.
 
-### 1. Use this template
+## Tech stack
 
-![Homepage](https://i.imgur.com/RXm10f8.png)
+- [Next.js 16](https://nextjs.org) (App Router)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Framer Motion](https://www.framer.com/motion/) — scroll animations, lightbox transitions
+- [next-intl](https://next-intl-docs.vercel.app) — EN/PL i18n
 
-### 2. Install Dependencies
+## Getting started
 
 ```bash
-cd web-template
 npm install
-```
-
-### 3. Run the Project
-
-```bash
 npm run dev
 ```
 
-### 5. View the Application
-
-Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
-
-## Working with git
-
-### Github Solvro Handbook
-
-<https://docs.solvro.pl/guides/github>
-
-### SSH
-
-If you are a Windows user, follow this [tutorial](https://www.youtube.com/watch?v=vExsOTgIOGw) to connect via SSH
-
-### Building a new feature
-
-1. Checkout and update main branch
+Open [http://localhost:3000](http://localhost:3000) — it redirects to `/en` by default.
 
 ```bash
-   git checkout main
-   git pull origin main
-   git fetch
+npm run build   # production build
+npm run lint    # ESLint
 ```
 
-2. Create new feature branch
+## Project structure
 
-```bash
-   git checkout -b feat/x_my_feature_branch
+```
+app/
+  [locale]/         # EN/PL routes
+    layout.tsx
+    page.tsx
+  globals.css       # design system CSS vars + Space Grotesk
+  layout.tsx
+  page.tsx          # redirects / → /en
+
+components/
+  ui/
+    Navbar.tsx      # fixed top, transparent→dark on scroll, language toggle
+  sections/
+    Hero.tsx
+    SiliconJourney.tsx
+    StatsGrid.tsx
+    TheExchange.tsx
+    PhotoGallery.tsx
+    AboutOrgs.tsx
+    Footer.tsx
+
+i18n/               # next-intl routing config
+messages/           # en.json, pl.json
+proxy.ts            # i18n middleware (Next.js 16 equivalent of middleware.ts)
+public/
+  photos/           # graz/, wroclaw/
+  logos/
 ```
 
-> 'x' stands for issue number; this command will create and checkout a new branch named feat/x_my_feature_branch
+## i18n
 
-3. Commit your changes:
-
-```bash
-   git add .
-   git commit -m "<description>"
-```
-
-4. Push to remote:
-
-```bash
-   git push origin feat/x_my_feature_branch
-```
-
-5. Create a Pull Request on GitHub and wait for a review
-
-### ⚠️ Important ⚠️
-
-- Do not push directly to main branch!
-- Please remember to commit before checking out to a different branch
-- Clean up after a successful merge
-
-  ```bash
-  git branch -d feat/x_my_feature_branch
-  git push origin --delete feat/x_my_feature_branch
-  ```
-
-## Contact
-
-For questions or suggestions, please reach out to us:
-
-- ✉️ Email: <kn.solvro@pwr.edu.pl>
-- 🌐 Website: [solvro.pwr.edu.pl](https://solvro.pwr.edu.pl/)
-- 📘 Facebook: [KN Solvro](https://www.facebook.com/knsolvro)
-
----
-
-Thank you for reading! Stay tuned for more updates!
+Available at `/en` (English) and `/pl` (Polish). Language switcher in the navbar.
