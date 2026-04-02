@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 // ---------- interactive canvas background ----------
@@ -184,6 +185,28 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto mb-12 flex w-fit flex-col items-center gap-2 sm:flex-row sm:gap-3 lg:mb-8"
+        >
+          <a
+            href="https://solvro.pwr.edu.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-opacity hover:opacity-80"
+          >
+            <Image
+              src="/logos/solvro.svg"
+              alt="KN Solvro"
+              width={140}
+              height={40}
+              className="object-contain"
+            />
+          </a>
+        </motion.div>
+
         <h1 className="leading-none font-bold">
           {/* Title line 1 */}
           <motion.span
