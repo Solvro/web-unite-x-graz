@@ -662,7 +662,7 @@ export function TheExchange() {
       date: t("wroclaw_date"),
       location: t("wroclaw_title"),
       body: t("wroclaw_body"),
-      companies: ["XTPL", "Balluff", "WCSS", "PWr / NaMi"],
+      companies: ["XTPL", "Balluff", "WCSS", "PWr", "NaMi"],
       accent: "#1FBB6E",
       photos: WROCLAW_PHOTOS,
     },
