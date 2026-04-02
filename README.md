@@ -10,6 +10,7 @@ Commemorative and educational website for the **Unite! Seed Fund** project by [K
 - **October 2025** — BEST Graz students visited Wrocław: XTPL, Balluff, WCSS, PWr Clean Room with NaMi
 
 The website has two purposes:
+
 1. **Commemorative** — celebrates the exchange project and its participants
 2. **Educational** — explains how sand becomes a silicon chip (5-step journey)
 
@@ -57,7 +58,6 @@ components/
     StatsGrid.tsx
     TheExchange.tsx
     PhotoGallery.tsx
-    Quotes.tsx
     AboutOrgs.tsx
     Footer.tsx
 
@@ -72,10 +72,3 @@ public/
 ## i18n
 
 Available at `/en` (English) and `/pl` (Polish). Language switcher in the navbar.
-
-## Organizations
-
-| Organization | University |
-|---|---|
-| [KN Solvro](https://solvro.pwr.edu.pl) | Wrocław University of Science and Technology |
-| [BEST Graz](https://www.bestgraz.org) | Technische Universität Graz |

@@ -1,12 +1,13 @@
-import Navbar from '@/components/ui/Navbar';
-import Hero from '@/components/sections/Hero';
-import SiliconJourney from '@/components/sections/SiliconJourney';
-import StatsGrid from '@/components/sections/StatsGrid';
-import TheExchange from '@/components/sections/TheExchange';
-import AboutOrgs from '@/components/sections/AboutOrgs';
-import Footer from '@/components/sections/Footer';
-import { routing } from '@/i18n/routing';
+import { AboutOrgs } from "@/components/sections/about-orgs";
+import { Footer } from "@/components/sections/footer";
+import { Hero } from "@/components/sections/hero";
+import { SiliconJourney } from "@/components/sections/silicon-journey";
+import { StatsGrid } from "@/components/sections/stats-grid";
+import { TheExchange } from "@/components/sections/the-exchange";
+import { Navbar } from "@/components/ui/navbar";
+import { routing } from "@/i18n/routing";
 
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
