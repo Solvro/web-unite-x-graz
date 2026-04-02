@@ -26,7 +26,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return {
     ...(metaByLocale[locale] ?? metaByLocale.en),
-    icons: { icon: "/logos/logo_solvro_mono.png" },
+    icons: { icon: "/favicon.png" },
   };
 }
 
