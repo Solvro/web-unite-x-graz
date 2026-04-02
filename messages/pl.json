@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "journey": "Podróż",
+    "exchange": "Wymiana",
+    "about": "Organizatorzy"
+  },
+  "hero": {
+    "title1": "PODRÓŻ PRZEZ ŚWIAT",
+    "title2": "Krzemu",
+    "subtitle": "Studenci Politechniki Wrocławskiej i TU Graz eksplorują świat półprzewodników w projekcie Unite! Seed Fund łączącym edukację, doświadczenie praktyczne i wymianę międzynarodową.",
+    "cta_journey": "Zacznij podróż",
+    "cta_summary": "Zobacz wymianę"
+  },
+  "silicon": {
+    "intro_title": "To zaczyna się od piasku...",
+    "intro_body": "Zwykły piasek zawiera dużo dwutlenku krzemu (SiO₂). Ale nie jest wystarczająco czysty dla elektroniki. Podróż zaczyna się od wydobycia i oczyszczenia krzemu z piasku kwarcowego przez wysokotemperaturowy proces chemiczny - wymóg konieczny do tworzenia niezawodnych mikroukładów.",
+    "step1_title": "Oczyszczanie piasku",
+    "step1_body": "Piasek kwarcowy zawiera dużo dwutlenku krzemu (SiO₂). Podróż zaczyna się od wydobycia i oczyszczenia krzemu przez wysokotemperaturowy proces chemiczny. Krzem jest oczyszczany do czystości 99,9999999% (dziewięć dziewiątek).",
+    "step1_label": "Krzem oczyszczany do 99,9999999%",
+    "step2_title": "Hodowanie wlewka krzemowego",
+    "step2_body": "Ultraczsty krzem jest topiony i hodowany w jeden duży kryształ metodą Czochralskiego. Ziarno jest formowane w cylindryczny wlewek - idealną strukturę krzemową stanowiącą podstawę każdego nowoczesnego mikroprocesora.",
+    "step2_label": "Wysokość wlewka do 2m",
+    "step3_title": "Cięcie i polerowanie waferów",
+    "step3_body": "Wlewek krzemowy jest cięty na cienkie waferye, jak mikroskopijne naleśniki. Każdy wafer jest polerowany do gładkości na poziomie atomów, tworząc płaską powierzchnię gotową do drukowania układów scalonych.",
+    "step3_label": "< 1nm chropowatość powierzchni",
+    "step4_title": "Drukowanie układów",
+    "step4_body": "Fotolitografia przenosi wzorzec układu na wafer za pomocą światła. Warstwa po warstwie budowane są tranzystory w skali nanometrów - mniejsze niż wirus. Jeden nowoczesny chip zawiera miliardy tranzystorów.",
+    "step4_label": "Miliardy tranzystorów na chip",
+    "step5_title": "Pakowanie i testowanie",
+    "step5_body": "Każdy chip jest wycinany z wafera, testowany pod kątem defektów i pakowany w znane nam czarne obudowy. Od surowego piasku do gotowego procesora - podróż krzemu jest zakończona.",
+    "step5_label": "Od piasku do chipa"
+  },
+  "stats": {
+    "section_title": "Europejski Akt o Chipach",
+    "section_subtitle": "W 2023 roku Unia Europejska przyjęła Europejski Akt o Chipach - przełomowe rozporządzenie mające na celu zabezpieczenie europejskiego łańcucha dostaw półprzewodników, ograniczenie zależności strategicznych i ustanowienie Europy globalnym liderem w technologii chipów do 2030 roku.",
+    "stat1_value": "€43 mld",
+    "stat1_label": "inwestycji publicznych i prywatnych do uruchomienia do 2030 r.",
+    "stat2_value": "20%",
+    "stat2_label": "docelowy udział w globalnej produkcji chipów - wobec ~9% obecnie",
+    "stat3_value": "2030",
+    "stat3_label": "docelowy rok podwojenia udziału Europy w światowej produkcji chipów",
+    "stat4_value": "~9%",
+    "stat4_label": "obecny udział Europy w globalnej produkcji półprzewodników",
+    "project_link": "Nasz projekt wpisał się bezpośrednio w tę ambicję - konfrontując studentów inżynierii z fabrykami chipów, clean roomami i laboratoriami badawczymi, by poszerzyć świadomość półprzewodników jako strategicznej gałęzi przemysłu.",
+    "source_note": "Źródło: Komisja Europejska — Europejski Akt o Chipach, 2023"
+  },
+  "exchange": {
+    "section_title": "Wymiana",
+    "section_subtitle": "Dwie społeczności studenckie. Dwa kraje. Jedna wspólna pasja do technologii.",
+    "graz_title": "Graz, Austria",
+    "graz_date": "Maj 2025",
+    "graz_body": "Członkowie KN Solvro odwiedzili Graz - Europejską Dolinę Krzemową. Zwiedzili zakłady produkcyjne ams OSRAM, w tym pomieszczenie Clean Room, zbadali najnowocześniejsze badania Silicon Austria Labs i odwiedzili laboratoria Technische Universität Graz. Studenci BEST Graz zadbali o to, by wizyta łączyła głębię techniczną z ciepłem kulturowym.",
+    "graz_companies": "Odwiedzone firmy i instytucje",
+    "wroclaw_title": "Wrocław, Polska",
+    "wroclaw_date": "Październik 2025",
+    "wroclaw_body": "Studenci TU Graz odwiedzili Wrocław, goszczeni przez KN Solvro. Poznali technologię nanodruku XTPL, rozwiązania czujnikowe Balluff oraz Wrocławskie Centrum Sieciowo-Superkomputerowe (WCSS). Program obejmował również zwiedzanie Wydziału Elektroniki PWr, w tym specjalistyczne pomieszczenie Clean Room, zorganizowane we współpracy z kołem naukowym NaMi.",
+    "wroclaw_companies": "Odwiedzone firmy i instytucje"
+  },
+  "about": {
+    "section_title": "Organizatorzy",
+    "section_subtitle": "Dwie organizacje studenckie stojące za projektem.",
+    "solvro_name": "KN Solvro",
+    "solvro_university": "Politechnika Wrocławska",
+    "solvro_desc": "Największa organizacja studencka IT tego rodzaju w Polsce. Zakorzeniona w PWr, ale z międzynarodowym zasięgiem - tworzymy aplikacje od studentów dla studentów, przesuwamy granice nauki w badaniach AI/ML oraz budujemy społeczność przez wydarzenia, które kształtują kolejne pokolenie utalentowanych inżynierów.",
+    "best_name": "BEST Graz",
+    "best_university": "Technische Universität Graz",
+    "best_desc": "Organizacja studencka TU Graz z 20 aktywnymi członkami, łącząca studentów z przemysłem i środowiskiem akademickim poprzez międzynarodowe wydarzenia i targi kariery.",
+    "funded_by": "Finansowane przez",
+    "in_cooperation": "We współpracy z",
+    "learn_more": "Dowiedz się więcej"
+  },
+  "footer": {
+    "tagline": "Journey Through The Silicon World",
+    "subtitle": "Projekt Unite! Seed Fund by KN Solvro & BEST Graz",
+    "rights": "© 2025 KN Solvro, Politechnika Wrocławska. Wszelkie prawa zastrzeżone."
+  }
+}
