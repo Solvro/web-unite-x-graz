@@ -30,7 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@next/eslint-plugin-next": "^16.2.2",
-    "@solvro/config": "^2.3.0",
+    "@solvro/config": "^2.3.3",
     "@tailwindcss/postcss": "^4",
     "@types/d3-geo": "^3.1.0",
     "@types/node": "^20",
